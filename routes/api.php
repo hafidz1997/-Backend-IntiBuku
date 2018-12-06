@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', 'ApiAuthController@register');
 Route::post('/login', 'ApiAuthController@login');
 
+Route::get('/getReview', 'ApiReviewController@getReview');
+
