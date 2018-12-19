@@ -21,4 +21,7 @@ Route::post('/register', 'ApiAuthController@register');
 Route::post('/login', 'ApiAuthController@login');
 
 Route::get('/getReview', 'ApiReviewController@getReview');
+Route::post('/tambahReview/{id}', 'ApiReviewController@tambahReview')->middleware('auth:api');
+
+Route::get('/getEvent', 'ApiEventController@getEvent');
 
