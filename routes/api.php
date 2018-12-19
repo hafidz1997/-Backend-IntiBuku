@@ -20,8 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', 'ApiAuthController@register');
 Route::post('/login', 'ApiAuthController@login');
 
+//beranda review
 Route::get('/getReview', 'ApiReviewController@getReview');
 Route::post('/tambahReview/{id}', 'ApiReviewController@tambahReview')->middleware('auth:api');
 
+//listevent
 Route::get('/getEvent', 'ApiEventController@getEvent');
+Route::post('/tambahEvent/{id}', 'ApiEventController@tambahEvent')->middleware('auth:api');
+
+//profil
+Route::get('/getProfil/{id}', 'ApiProfilController@getProfil')->middleware('auth:api');
 
