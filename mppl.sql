@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2018 at 06:28 PM
+-- Generation Time: Dec 20, 2018 at 06:39 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -57,11 +57,18 @@ INSERT INTO `event` (`id_event`, `id_user`, `gambar_event`, `nama_event`, `waktu
 
 CREATE TABLE `komentar` (
   `id_komentar` int(11) NOT NULL,
-  `id_review` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `isi_komentar` text NOT NULL,
-  `rating review` int(11) NOT NULL
+  `id_reviews` int(11) NOT NULL,
+  `isi_komentar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `komentar`
+--
+
+INSERT INTO `komentar` (`id_komentar`, `id_user`, `id_reviews`, `isi_komentar`) VALUES
+(1, 5, 2, 'wowwwwwwwwwwwwwwwwwwwwww'),
+(2, 4, 2, 'hohohohohohohohoh');
 
 -- --------------------------------------------------------
 
@@ -91,7 +98,8 @@ INSERT INTO `review` (`id_review`, `id_user`, `judul_review`, `judul_buku`, `pen
 (1, 2, 'ini review', 'ini buku pertama', 'sayah', 'asdf', 'halaman 100, tebal 50', 'ini review blablablablablaablablablbalblablalablbalablbalabablablablablablabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbalbalblabalbalbalabl', 4, NULL, NULL),
 (2, 3, 'review nih', 'ini buku kedua', 'hoho', 'hijk', 'halaman 20, tebal 30', 'sldkasldlaskmlksancklnckdncklasdklsajdklsjdlksajdsakljdsakjdklsjdklsajdlksdjkljsalkdjaslkdsad', 3, NULL, NULL),
 (3, 5, 'review nih', 'buku nih', 'ini pengarang', NULL, 'ini detail', 'isi nih', NULL, '2018-12-19 04:09:35', '2018-12-19 04:09:35'),
-(4, 5, 'a', 'b', 'c', NULL, 'e', 'd', NULL, '2018-12-19 09:31:06', '2018-12-19 09:31:06');
+(4, 5, 'a', 'b', 'c', NULL, 'e', 'd', NULL, '2018-12-19 09:31:06', '2018-12-19 09:31:06'),
+(5, 5, 'review keren', 'buku a', 'saya', NULL, 'bagus bukunya', 'hmmmmmmmmmmmmmmmmmm', NULL, '2018-12-19 17:30:08', '2018-12-19 17:30:08');
 
 -- --------------------------------------------------------
 
@@ -140,8 +148,7 @@ ALTER TABLE `event`
 -- Indexes for table `komentar`
 --
 ALTER TABLE `komentar`
-  ADD PRIMARY KEY (`id_komentar`),
-  ADD KEY `review_komentar` (`id_review`);
+  ADD PRIMARY KEY (`id_komentar`);
 
 --
 -- Indexes for table `review`
@@ -169,29 +176,19 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `komentar`
---
-ALTER TABLE `komentar`
-  ADD CONSTRAINT `review_komentar` FOREIGN KEY (`id_review`) REFERENCES `review` (`id_review`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
