@@ -42,4 +42,19 @@ class ApiEventController extends Controller
           ]);
 
     }
+
+    public function detailEvent($id_e)
+    {
+        // $id_user = $user->find($id)->id;
+        $event= event::join('user', 'user.id', '=', 'event.id_user')
+        ->where('id_event',$id_e)
+        ->first();
+
+
+          return response()->json([
+            'success'=>true,
+            'message'=>"asdf",
+            'event'=>$event
+          ]);
+    }
 }

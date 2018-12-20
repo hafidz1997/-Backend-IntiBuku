@@ -21,6 +21,21 @@ class ApiReviewController extends Controller
           ]);
     }
 
+    public function detailReview($id_r)
+    {
+        // $id_user = $user->find($id)->id;
+        $review = review::join('user', 'user.id', '=', 'review.id_user')
+        ->where('id_review',$id_r)
+        ->first();
+
+
+          return response()->json([
+            'success'=>true,
+            'message'=>"asdf",
+            'review'=>$review
+          ]);
+    }
+
     public function tambahReview(Request $request, User $user, $id)
     {
         $id_user = $user->find($id)->id;

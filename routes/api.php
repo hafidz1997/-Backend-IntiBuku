@@ -23,10 +23,12 @@ Route::post('/login', 'ApiAuthController@login');
 //beranda review
 Route::get('/getReview', 'ApiReviewController@getReview');
 Route::post('/tambahReview/{id}', 'ApiReviewController@tambahReview')->middleware('auth:api');
+Route::get('/detailReview/{id_r}', 'ApiReviewController@detailReview')->middleware('auth:api');
 
 //listevent
 Route::get('/getEvent', 'ApiEventController@getEvent');
 Route::post('/tambahEvent/{id}', 'ApiEventController@tambahEvent')->middleware('auth:api');
+Route::get('/detailEvent/{id_e}', 'ApiEventController@detailEvent')->middleware('auth:api');
 
 //profil
 Route::get('/getProfil/{id}', 'ApiProfilController@getProfil')->middleware('auth:api');
