@@ -30,6 +30,9 @@ Route::get('/getEvent', 'ApiEventController@getEvent');
 Route::post('/tambahEvent/{id}', 'ApiEventController@tambahEvent')->middleware('auth:api');
 Route::get('/detailEvent/{id_e}', 'ApiEventController@detailEvent')->middleware('auth:api');
 
+//komentar
+Route::get('/getKomentar/{id_r}', 'ApiKomentarController@getKomentar');
+
 //profil
 Route::get('/getProfil/{id}', 'ApiProfilController@getProfil')->middleware('auth:api');
 
